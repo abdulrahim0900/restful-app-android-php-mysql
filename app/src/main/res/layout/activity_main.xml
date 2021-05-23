@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,9 +9,10 @@
     tools:context="edu.cs.birzeit.restapp.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/texd"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Demonstrate REST Service"
+        android:text="1163095 Demonstrate REST Service"
         android:layout_margin="20dp"
          />
 
@@ -19,27 +20,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edtCat"
-        android:hint="Enter Book Category"/>
+        android:hint="Enter Course Category"
+        android:layout_below="@id/texd"
+         />
+
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/btn"
-        android:text="Get Books"
-        android:layout_margin="20dp"
-        android:onClick="onClickbtn"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickbtn"
+        android:text="Get Courses"
+        android:layout_below="@id/edtCat" />
 
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:id="@+id/edtData"/>
+        android:id="@+id/edtData"
+        android:layout_below="@id/btn"/>
+
 
     <Button
+        android:id="@+id/ListViewShow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnOpenAddActivity"
-        android:text="Open"
-        android:onClick="btnOpenOnClick"/>
+        android:onClick="ListViewShowBtn"
+        android:text="List View Courses"
+        android:layout_below="@id/edtData"/>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/Update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="UpdateOnClick"
+        android:text="Update Course"
+        android:layout_below="@id/ListViewShow"/>
+
+    <Button
+        android:id="@+id/btnOpenAddActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btnOpenOnClick"
+        android:text="Add Course"
+        android:layout_below="@id/Update"/>
+
+</RelativeLayout>

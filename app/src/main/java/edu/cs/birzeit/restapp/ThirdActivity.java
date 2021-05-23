@@ -19,30 +19,28 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
-public class SecondActivity extends AppCompatActivity {
-    private EditText CourseTitleSeconed;
-    private EditText CourseCategorySeconed;
-    private EditText NoOfLecturesSeconed;
+public class ThirdActivity extends AppCompatActivity {
+    private EditText CourseTitleThird;
+    private EditText CourseCategoryThird;
+    private EditText NoOfLecturesThird;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_third);
         setUpViews();
-
-
 
     }
 
     private void setUpViews() {
-        CourseTitleSeconed =  findViewById(R.id.CourseTitleSeconed);
-        CourseCategorySeconed = findViewById(R.id.CourseCategorySeconed);
-        NoOfLecturesSeconed = findViewById(R.id.NoOfLecturesSeconed);
+        CourseTitleThird =  findViewById(R.id.CourseTitleThird);
+        CourseCategoryThird = findViewById(R.id.CourseCategoryThird);
+        NoOfLecturesThird = findViewById(R.id.NoOfLecturesThird);
     }
 
     private String processRequest(String restUrl) throws UnsupportedEncodingException {
-        String title = CourseTitleSeconed.getText().toString();
-        String category = CourseCategorySeconed.getText().toString();
-        String pages = NoOfLecturesSeconed.getText().toString();
+        String title = CourseTitleThird.getText().toString();
+        String category = CourseCategoryThird.getText().toString();
+        String pages = NoOfLecturesThird.getText().toString();
 
         String data = URLEncoder.encode("title", "UTF-8")
                 + "=" + URLEncoder.encode(title, "UTF-8");
@@ -125,38 +123,12 @@ public class SecondActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
 
-            Toast.makeText(SecondActivity.this, result, Toast.LENGTH_SHORT).show();
+            Toast.makeText(ThirdActivity.this, result, Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void btnAddOnClick(View view) {
-
-                final String Name=CourseTitleSeconed.getText().toString();
-                final String word=CourseCategorySeconed.getText().toString();
-                if(Name.length()==0)
-                {
-                    CourseTitleSeconed.requestFocus();
-                    CourseTitleSeconed.setError("FIELD CANNOT BE EMPTY");
-                }
-                else if(!Name.matches("[a-zA-Z ]+"))
-                {
-                    CourseTitleSeconed.requestFocus();
-                    CourseTitleSeconed.setError("ENTER ONLY ALPHABETICAL CHARACTER");
-                }
-                else if(word.length()==0)
-                {
-                    CourseCategorySeconed.requestFocus();
-                    CourseCategorySeconed.setError("FIELD CANNOT BE EMPTY");
-                }
-                else
-                {
-                    Toast.makeText(SecondActivity.this,"Validation Successful",Toast.LENGTH_LONG).show();
-                }
-
-
-
-
-        String restUrl = "http://192.168.1.91:80/rest/addbook.php";
+    public void ThirdbtnAddOnClick(View view) {
+        String restUrl = "http://192.168.1.91:80/rest/updateBook.php";
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.INTERNET)
                 != PackageManager.PERMISSION_GRANTED) {

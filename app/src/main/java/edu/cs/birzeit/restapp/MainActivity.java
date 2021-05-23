@@ -2,8 +2,10 @@ package edu.cs.birzeit.restapp;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -11,9 +13,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.os.AsyncTask;
 import android.widget.Toast;
-
+import edu.cs.birzeit.restapp.GSON.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         EditText edtCat = findViewById(R.id.edtCat);
 
 
-        String url = "http://10.0.2.2:84/rest/info.php?cat=" + edtCat.getText();
+        String url = "http://192.168.1.91:80/rest/info.php?cat=" + edtCat.getText();
+        Log.d(url, "onClickbtn: ");
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.INTERNET)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -112,7 +114,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnOpenOnClick(View view) {
+        Course[] courses = new Course[2];
+        courses[0] = new Course("Java Core", "John","22");
+
+
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        String coursesString = gson.toJson(courses);
+
+        editor.putString("123", coursesString);
+        editor.commit();
+        Toast.makeText(this, "Data Saved:\n" + courses,
+                Toast.LENGTH_SHORT).show();
+
+
         Intent intent = new Intent(this, SecondActivity.class);
+        startActivity(intent);
+    }
+
+    public void UpdateOnClick(View view) {
+
+        Intent intent = new Intent(this, ThirdActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void ListViewShowBtn(View view) {
+        Intent intent = new Intent(this, FourActivity.class);
         startActivity(intent);
     }
 
@@ -123,12 +153,7 @@ public class MainActivity extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result) {
-           //Toast.makeText(getBaseContext(), result, Toast.LENGTH_LONG).show();
-            //String[] books = result.split(",");
-            //String str = "";
-            //for(String s : books){
-            //    str+= s + "\n";
-           // }
+
             EditText edtData = findViewById(R.id.edtData);
             edtData.setText(result);
         }
