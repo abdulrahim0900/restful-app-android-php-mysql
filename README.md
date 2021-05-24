@@ -1,7 +1,13 @@
 # restful-app-android-php-mysql
 # Student Number: 1163095 
 # https://www.youtube.com/watch?v=RC96rL9VnSY&feature=youtu.be
-# 
+# The recored screen app just recored the android studio window and i notice that now and i can't re-upload the video because size,
+I attach PHP Files secreen shoots here in below links:
+https://ibb.co/Y7W3kVB
+https://ibb.co/Q6cC162
+https://ibb.co/0Jt9dNq
+https://ibb.co/b3MwSbM
+
 # 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
